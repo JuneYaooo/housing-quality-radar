@@ -11,6 +11,8 @@ git clone https://github.com/JuneYaooo/housing-quality-radar.git \
 
 已有同名目录先检查自己的修改，再更新。也可克隆到工作目录后运行 `bash install_as_skill.sh`；安装器会备份原安装，默认目标 `${CODEX_HOME:-$HOME/.codex}/skills`，可用首个参数指定目标父目录。
 
+租房/买房通过 `transaction_type` 配置，分析方式通过 `decision_pipeline.mode` 配置，两者独立。租房和买房均可选择 agent 或 jev；未指定分析方式时默认 agent。
+
 ## 常规模式（agent）
 
 告诉Agent“不使用Jev”，配置 `decision_pipeline.mode` 为 `agent`。Agent直接完成全文、账号和图片分析，不调用TypeSafe。日期和金额使用代码计算。通常不必运行辅助脚本。
