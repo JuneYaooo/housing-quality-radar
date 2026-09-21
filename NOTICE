@@ -1,0 +1,7 @@
+优质房子筛选器 / Housing Quality Radar
+Copyright 2026 JuneYaooo
+
+原创 Skill 指令与辅助脚本采用 Apache License 2.0。
+数据来源路线参考 JuneYaooo/social-account-doctor（commit 2438d5ae7c8e7d876ac89b5e621980fa50a5e0dd）；本仓库不包含该项目或第三方采集器的实现。
+Jev/TypeSafe 为独立外部服务，使用其 API 须遵循服务方条款。
+小红书等平台的帖子、照片、账号材料不属于本仓库许可范围。本仓库仅包含合成示例和聚合评测摘要，不分发真实采集记录。

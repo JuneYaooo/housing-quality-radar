@@ -1,0 +1,4 @@
+interface:
+  display_name: "优质房子筛选器"
+  short_description: "按区域或小区追踪租售房源，分析账号、真实性、品质与横向性价比"
+  default_prompt: "使用 $xiaohongshu-housing-radar，先了解我的找房范围和预算，再建立小红书账号及区域基线，筛选值得核验的房源。"

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "watch_id": null,
+  "config_version": 1,
+  "timezone": "Asia/Shanghai",
+  "city": null,
+  "districts": [],
+  "communities": [],
+  "community_aliases": {},
+  "transaction_type": null,
+  "rental_type": null,
+  "budget": {
+    "min": null,
+    "max": null,
+    "currency": "CNY",
+    "period": null
+  },
+  "layout": [],
+  "area_sqm": {
+    "min": null,
+    "max": null
+  },
+  "target_date": null,
+  "planned_residence_months": null,
+  "hard_constraints": [],
+  "preferences": [],
+  "seed_accounts": [],
+  "seed_urls": [],
+  "data_source": null,
+  "lookback_days": 30,
+  "sample_targets": {
+    "posts": 50,
+    "accounts": 10,
+    "history_per_account": 20
+  },
+  "heuristics": {
+    "version": "1-initial-unvalidated",
+    "concurrent_window_hours": 72,
+    "long_exposure_rent_days": 30,
+    "long_exposure_sale_days": 90,
+    "min_price_comparables": 5,
+    "min_exit_samples_for_quantiles": 10
+  },
+  "schedule": {
+    "enabled": false,
+    "frequency": null,
+    "scheduler_task_id": null
+  },
+  "notify_on": [
+    "new_matching_property",
+    "price_change",
+    "evidence_change",
+    "status_change",
+    "action_required"
+  ],
+  "source_policy": {
+    "priority": [
+      "computer_use",
+      "host_browser",
+      "opencli",
+      "tikhub_rest",
+      "mediacrawler"
+    ],
+    "preferred": null,
+    "cache_max_age_hours": 24,
+    "paid_api_authorized": false,
+    "paid_api_budget": null,
+    "mc_daily_run_limit": 4,
+    "mc_min_interval_minutes": 30
+  },
+  "decision_pipeline": {
+    "version": "2-shadow",
+    "jev": {
+      "enabled": false,
+      "mode": "shadow",
+      "model": "jev-latest",
+      "review_confidence_threshold": 0.8,
+      "max_requests_per_run": 20
+    },
+    "auto_reject": false,
+    "external_verification_required": true
+  }
+}
