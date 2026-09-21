@@ -61,7 +61,7 @@ def run(records, *, enabled=False, model='jev-latest', threshold=0.8, max_reques
     rows, stopped, attempted = [], False, 0
     for record in records:
         text = record['text']
-        row = {'post_id': record['post_id'], 'mode': 'shadow', 'retained': True,
+        row = {'post_id': record['post_id'], 'mode': 'jev' if enabled else 'agent', 'triage_policy': 'shadow', 'retained': True,
                'requires_evidence_review': True, 'authenticity': 'not_evaluated',
                'source_sha256': hashlib.sha256(text.encode()).hexdigest(),
                'questions_sha256': hashlib.sha256(json.dumps(questions, sort_keys=True).encode()).hexdigest(),
@@ -104,7 +104,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('input', type=Path, help='UTF-8 JSONL: post_id, redacted text')
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--enable-jev', action='store_true', help='Send supplied text to TypeSafe; otherwise offline fallback')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--mode', choices=('agent', 'jev'), default='agent', help='agent: prepare queue without Jev; jev: classify via TypeSafe')
+    modes.add_argument('--enable-jev', dest='mode', action='store_const', const='jev', help='Compatibility alias for --mode jev')
     parser.add_argument('--model', default='jev-latest')
     parser.add_argument('--threshold', type=float, default=0.8)
     parser.add_argument('--max-requests', type=int, default=20)
@@ -124,12 +126,12 @@ def main():
             ids.add(r['post_id'])
     except (OSError, ValueError):
         parser.error('invalid input; require readable JSONL with unique post_id and nonempty text')
-    rows = run(records, enabled=args.enable_jev, model=args.model, threshold=args.threshold, max_requests=args.max_requests)
+    rows = run(records, enabled=args.mode == 'jev', model=args.model, threshold=args.threshold, max_requests=args.max_requests)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     # Exclusive create protects existing evidence; separate runs must use distinct paths.
     with args.output.open('x', encoding='utf-8') as stream:
         stream.write(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in rows))
-    print(json.dumps({'records': len(rows), 'retained': len(rows), 'mode': 'shadow',
+    print(json.dumps({'records': len(rows), 'retained': len(rows), 'mode': args.mode, 'triage_policy': 'shadow',
                       'triage_review_required': sum(r['triage_review_required'] for r in rows)}))
 
 

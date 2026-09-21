@@ -1,6 +1,9 @@
 import importlib.util
 import json
 import os
+import subprocess
+import sys
+import tempfile
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -98,6 +101,36 @@ class TriageTests(unittest.TestCase):
         rows = triage.run(self.records, enabled=True, request=lambda *a: raw)
         self.assertNotIn('intent', rows[0]['labels'])
         self.assertIn('intent:invalid_answer', rows[0]['review_reasons'])
+
+    def test_cli_modes_and_legacy_alias_without_credentials(self):
+        env = os.environ.copy()
+        env.pop('TYPESAFE_API_KEY', None)
+        with tempfile.TemporaryDirectory() as directory:
+            for i, (args, mode, reason) in enumerate([
+                ([], 'agent', 'jev_disabled'),
+                (['--mode', 'agent'], 'agent', 'jev_disabled'),
+                (['--mode', 'jev'], 'jev', 'missing_api_key'),
+                (['--enable-jev'], 'jev', 'missing_api_key'),
+            ]):
+                output = Path(directory) / f'{i}.jsonl'
+                result = subprocess.run([sys.executable, str(ROOT / 'scripts/triage.py'),
+                    str(ROOT / 'evals/sanlin-20260921/triage-input.jsonl'),
+                    '--output', str(output), *args], env=env, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(json.loads(result.stdout)['mode'], mode)
+                rows = [json.loads(line) for line in output.read_text().splitlines()]
+                self.assertEqual(len(rows), 4)
+                self.assertTrue(all(r['mode'] == mode and r['review_reasons'] == [reason] for r in rows))
+
+    def test_cli_rejects_conflicting_modes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'output.jsonl'
+            result = subprocess.run([sys.executable, str(ROOT / 'scripts/triage.py'),
+                str(ROOT / 'evals/sanlin-20260921/triage-input.jsonl'),
+                '--output', str(output), '--mode', 'agent', '--enable-jev'],
+                capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertFalse(output.exists())
 
 
 if __name__ == '__main__':

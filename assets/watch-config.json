@@ -69,15 +69,15 @@
     "mc_min_interval_minutes": 30
   },
   "decision_pipeline": {
-    "version": "2-shadow",
+    "version": "3-explicit-modes",
     "jev": {
-      "enabled": false,
-      "mode": "shadow",
       "model": "jev-latest",
       "review_confidence_threshold": 0.8,
-      "max_requests_per_run": 20
+      "max_requests_per_run": 20,
+      "triage_policy": "shadow"
     },
     "auto_reject": false,
-    "external_verification_required": true
+    "external_verification_required": true,
+    "mode": "agent"
   }
 }

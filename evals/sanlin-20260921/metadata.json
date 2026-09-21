@@ -1,0 +1,19 @@
+{
+  "case_type": "historical_browser_trial_reanalyzed_from_saved_evidence",
+  "observed_on": "2026-09-21",
+  "target_window": [
+    "2026-09-07",
+    "2026-09-21"
+  ],
+  "queries": 4,
+  "post_details": 13,
+  "account_profiles": 6,
+  "published_cases": 4,
+  "coverage": "partial relevance-ranked search; not all listings in window",
+  "mode": "agent",
+  "live_inventory_verified": false,
+  "market_value_verified": false,
+  "hot_listing_verified": false,
+  "source_version": "e35fd2e historical trial documentation",
+  "current_change": "explicit modes and public case presentation; no new platform retrieval"
+}

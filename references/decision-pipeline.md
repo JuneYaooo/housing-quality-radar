@@ -7,11 +7,11 @@
 3. **Agent 证据复核**：检查图片、账号历史、同源关系、具体房源匹配、当前库存、历史与当前报价、硬条件和价格可比性。必要时用宿主更强的视觉/推理能力；脚本本身不会自动调用其他模型。权限或权属核验必须来自独立材料或用户核验记录，不来自任何模型分值。
 4. **最终清单**：所有优先候选仍经过 analysis.md 的证据与硬条件门槛。Jev 认为报价明确仅说明广告写了数字，不说明数字对应图片中的具体房源。
 
-## 默认 shadow 模式
+## 两种模式及初筛策略
 
-配置 `decision_pipeline.jev.enabled` 默认 false；启用时先运行 shadow。Jev 标签用于组织阅读队列，**全部输入保留**，不能据此自动剔除求租/广告或让房源进入推荐榜。运行脚本的开关必须与配置一致，脚本不会自行读取 watch-config。
+配置 `decision_pipeline.mode` 为 `agent` 或 `jev`，默认 agent。agent 由当前 Agent 完成全部分析，不调用 Jev；jev 模式的初筛策略为 shadow。旧配置仅有 `jev.enabled` 时由 Agent 迁移；显式 mode 优先。Jev 标签用于组织阅读队列，**全部输入保留**，不能据此自动剔除求租/广告或让房源进入推荐榜。运行脚本的开关必须与配置一致，脚本不会自行读取 watch-config。
 
-`review_confidence_threshold=0.8` 是未校准的初始复核阈值，只用于分流。低置信、无精确当前报价、类型未知、多套广告、缺字段及 API 错误需文本复核。即使所有分类高置信，`requires_evidence_review` 仍为 true。已发现的标题正文矛盾、媒体缺失和历史复用不在三个 Choice 的覆盖范围内，Agent 必须另查。
+`decision_pipeline.jev.review_confidence_threshold=0.8` 是未校准的初始复核阈值，只用于分流。低置信、无精确当前报价、类型未知、多套广告、缺字段及 API 错误需文本复核。即使所有分类高置信，`requires_evidence_review` 仍为 true。已发现的标题正文矛盾、媒体缺失和历史复用不在三个 Choice 的覆盖范围内，Agent 必须另查。
 
 没有 Key 或未启用时继续正常采集和 Agent 分析，不阻塞。请求失败不自动重试，不尝试其他服务域名；本轮后续文本转复核。单轮最多 20 请求（可配置）；超限保留后续文本。失败详情仅记错误类型/HTTP 状态，不落响应错误正文或请求头。
 
@@ -22,15 +22,17 @@
 先准备新输出路径，默认离线：
 
 ```bash
-python3 scripts/triage.py examples/triage-input.jsonl --output runs/offline.jsonl
+python3 scripts/triage.py evals/sanlin-20260921/triage-input.jsonl --mode agent --output runs/agent-queue.jsonl
 ```
 
-确认配置启用后，在运行环境设置 `TYPESAFE_API_KEY`，不要把密钥写进命令参数、仓库或报告：
+选择 jev 模式后，在运行环境设置 `TYPESAFE_API_KEY`，不要把密钥写进命令参数、仓库或报告：
 
 ```bash
 python3 scripts/triage.py /absolute/path/redacted-input.jsonl \
-  --output /absolute/path/new-triage.jsonl --enable-jev --max-requests 20
+  --output /absolute/path/new-triage.jsonl --mode jev --max-requests 20
 ```
+
+agent 模式脚本只整理队列，返回 `jev_disabled` 是路由标记，不是房源判断。Agent 随后必须阅读原文完成三项分类、引用依据并继续 analysis.md 的最终筛选；用户直接调用 Skill 时无需先跑脚本。
 
 输出含来源文本哈希、问题定义哈希、请求/实际模型、labels、复核原因、耗时和 API usage。不保存全文、Key 或原始响应。原始证据留在用户运行目录，凭 post_id 关联；这些标签是模型推断，不能写回 publisher_claim/user_verified。
 

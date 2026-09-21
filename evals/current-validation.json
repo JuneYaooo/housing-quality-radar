@@ -1,0 +1,17 @@
+{
+  "version": "explicit-modes-v2",
+  "python": "3.13.2",
+  "unit_tests_passed": 12,
+  "cli_mode": "agent",
+  "records": 4,
+  "retained": 4,
+  "live_jev_calls_this_revision": 0,
+  "installer_isolated_target": "passed",
+  "sha256": {
+    "scripts/triage.py": "170b5d5ae964de8a4ff5d96ac91ea268234188d71e87bc39405eb867bb6f717d",
+    "assets/jev-questions.json": "41701cf81bb39733e244cfd5a20d0c5519a285b7f1466dcf029dc2e8517aa25a",
+    "evals/sanlin-20260921/triage-input.jsonl": "9a3c4a0f7deadf1693c278ce031e0ef9ebe0ab8cc61bd35836163916d64a19e7",
+    "evals/sanlin-20260921/agent-queue.jsonl": "5e47fc3ea540731d7a29b923bd6ad8ed6abaea038bd06cf913f7ef360e8a9a65",
+    "docs/assets/sanlin-result.png": "76e440a5b229cb4dec6ce6364680626298b929b2b3b6524e81edc893fa12fee0"
+  }
+}
