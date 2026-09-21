@@ -19,7 +19,10 @@ cp -R "$SOURCE_DIR/." "$STAGING_DIR"
 rm -rf "$STAGING_DIR/.git" "$STAGING_DIR/.local-evals" "$STAGING_DIR/runs"
 
 if [[ -e "$TARGET_DIR" ]]; then
-  BACKUP_DIR="$TARGET_DIR.backup-$(date +%Y%m%d%H%M%S)"
+  BACKUP_ROOT="$(dirname "$TARGET_ROOT")/skill-backups"
+  mkdir -p "$BACKUP_ROOT"
+  BACKUP_DIR="$(mktemp -d "$BACKUP_ROOT/$SKILL_NAME.XXXXXX")"
+  rmdir "$BACKUP_DIR"
   mv "$TARGET_DIR" "$BACKUP_DIR"
   printf 'Previous installation moved to %s\n' "$BACKUP_DIR"
 fi
