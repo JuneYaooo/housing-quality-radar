@@ -1,0 +1,14 @@
+{
+  "as_of": "2026-09-21",
+  "source": "Structured only from facts already recorded in ../cases.json (observed 2026-09-21). No new platform retrieval. Fields absent from the saved evidence are left null.",
+  "listings": [
+    {"post_id": "6aacf45b000000001203555e", "property_id": "sanlin-lvbo-2r", "city": "上海", "community": "绿波家园", "transaction_type": "sale", "layout": "2室", "observed_on": "2026-09-21", "published_on": null, "publisher_role": null, "verification_code": null,
+     "price_claims": [{"source": "body", "raw": "268万元"}], "area": {"value": 67.19, "basis": "建筑面积"}},
+    {"post_id": "6ab08646000000002803b0dd", "property_id": "sanlin-shanlin-2r", "city": "上海", "community": "杉林新月", "transaction_type": "sale", "layout": "2室", "observed_on": "2026-09-21", "published_on": null, "publisher_role": "self_claimed_owner", "verification_code": null,
+     "price_claims": [{"source": "body", "raw": "335万元"}], "area": {"value": 71, "basis": "产证面积"}},
+    {"post_id": "6aaab271000000002902f0c2", "property_id": "sanlin-jiangjin-1r", "city": "上海", "community": "江锦北苑", "transaction_type": "rent", "layout": "1室", "observed_on": "2026-09-21", "published_on": null, "publisher_role": null, "verification_code": null,
+     "price_claims": [], "area": {"value": 65, "basis": "自述"}, "fees": {"monthly_service": null}, "payment": {}},
+    {"post_id": "6aaa650c0000000025036152", "property_id": null, "city": "上海", "community": null, "transaction_type": "sale", "layout": null, "observed_on": "2026-09-21", "published_on": null, "publisher_role": null, "verification_code": null,
+     "price_claims": [{"source": "title", "raw": "225万"}, {"source": "body", "raw": "228万元不议价"}], "area": null}
+  ]
+}

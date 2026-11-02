@@ -1,0 +1,29 @@
+{
+  "suite": "rule-layer-v1",
+  "cases_sha256": "3678163b82f5b9fede0793a7e126e1a96960504b096c2d8c59c5f8a22ee90943",
+  "rules_version": "metrics-2026-11-v1",
+  "python": "3.12.9",
+  "scope": "deterministic rule layer only; not Agent end-to-end listing quality",
+  "conditions": {
+    "before_v0.2_rules": {
+      "passed": 9,
+      "total": 19,
+      "rate": 0.474,
+      "wilson95": [
+        0.273,
+        0.683
+      ],
+      "failed_hard_or_adversarial": 7
+    },
+    "after_v0.3_metrics": {
+      "passed": 19,
+      "total": 19,
+      "rate": 1.0,
+      "wilson95": [
+        0.832,
+        1.0
+      ],
+      "failed_hard_or_adversarial": 0
+    }
+  }
+}

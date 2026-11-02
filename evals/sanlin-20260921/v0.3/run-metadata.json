@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-11-02",
+  "skill_version": "0.3.0",
+  "rules_version": "metrics-2026-11-v1",
+  "python": "3.12.9",
+  "os": "macOS-26.2-arm64-arm-64bit",
+  "input": "listings-input.json — structured only from ../cases.json facts observed 2026-09-21; no new retrieval",
+  "commands": [
+    "python3 scripts/listing_metrics.py evals/sanlin-20260921/v0.3/listings-input.json --output evals/sanlin-20260921/v0.3/listing-metrics.json --summary",
+    "python3 scripts/triage.py evals/sanlin-20260921/triage-input.jsonl --mode agent --output evals/sanlin-20260921/v0.3/agent-queue.jsonl"
+  ],
+  "before_artifact": "../agent-queue.jsonl (v0.2: routing queue only, no metrics)",
+  "live_recheck_2026_11_02": {
+    "method": "anonymous HTTPS GET of the 4 public post URLs (no login, no xsec_token)",
+    "result": "all 4 redirected to xiaohongshu.com/404 with error_code=300031 (当前笔记暂时无法浏览)",
+    "interpretation": "access limited; recorded as post_inaccessible; NOT evidence of deletion, rental or sale",
+    "opencli": "v1.8.6 doctor: browser extension not connected; not used",
+    "tikhub": "no API key configured; not used",
+    "mediacrawler": "not run",
+    "lianjia_community_page": "redirected to login; no external listing benchmark collected"
+  },
+  "live_inventory_verified": false,
+  "market_value_verified": false,
+  "sha256": {
+    "listings-input.json": "8f54ef26f8bd2b80a4d6aecf3424f324ddcf75f7569af95b3c2bc50e6afd2433",
+    "listing-metrics.json": "7862bba21d2884d9db391aa2f561f1a7ec64884e9bcc68e70d99cb8a475b1c7d",
+    "summary.txt": "f7207b9825d99b4e28d4551f470dab9e468e86938e551e62f8e8350595dc59b3",
+    "agent-queue.jsonl": "5e47fc3ea540731d7a29b923bd6ad8ed6abaea038bd06cf913f7ef360e8a9a65",
+    "cli-summary.json": "8389315df185dbd55d6895c880b53b2647142ff6e66ce4410d7aa481593c9743"
+  }
+}

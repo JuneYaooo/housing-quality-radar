@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "validator": "scripts/validate_repository.py",
+  "repository": "housing-quality-radar",
+  "status": "pass",
+  "passed": 24,
+  "total": 24,
+  "checks": [
+    {
+      "check_id": "required:SKILL.md",
+      "passed": true,
+      "detail": "SKILL.md exists"
+    },
+    {
+      "check_id": "required:README.md",
+      "passed": true,
+      "detail": "README.md exists"
+    },
+    {
+      "check_id": "required:LICENSE",
+      "passed": true,
+      "detail": "LICENSE exists"
+    },
+    {
+      "check_id": "required:agents/openai.yaml",
+      "passed": true,
+      "detail": "agents/openai.yaml exists"
+    },
+    {
+      "check_id": "required:evals/README.md",
+      "passed": true,
+      "detail": "evals/README.md exists"
+    },
+    {
+      "check_id": "evals:cases",
+      "passed": true,
+      "detail": "evals contains a project-specific case set"
+    },
+    {
+      "check_id": "evals:rubric",
+      "passed": true,
+      "detail": "evals contains a project-specific rubric"
+    },
+    {
+      "check_id": "evals:run-metadata",
+      "passed": true,
+      "detail": "evals contains a run protocol or environment metadata file"
+    },
+    {
+      "check_id": "skill:frontmatter",
+      "passed": true,
+      "detail": "SKILL.md has parseable YAML frontmatter"
+    },
+    {
+      "check_id": "skill:name",
+      "passed": true,
+      "detail": "name uses lowercase hyphenated Skill naming"
+    },
+    {
+      "check_id": "skill:folder-name",
+      "passed": true,
+      "detail": "frontmatter name 'housing-quality-radar' matches folder 'housing-quality-radar'"
+    },
+    {
+      "check_id": "skill:description",
+      "passed": true,
+      "detail": "description explains capability and routing without scaffold text"
+    },
+    {
+      "check_id": "skill:no-scaffold",
+      "passed": true,
+      "detail": "SKILL.md contains no unfinished scaffold markers"
+    },
+    {
+      "check_id": "readme:no-script-code",
+      "passed": true,
+      "detail": "README contains no fenced code, terminal commands, or script blocks"
+    },
+    {
+      "check_id": "readme:visuals",
+      "passed": true,
+      "detail": "README includes at least two local explanatory visuals"
+    },
+    {
+      "check_id": "readme:install",
+      "passed": true,
+      "detail": "README explains installation"
+    },
+    {
+      "check_id": "readme:usage",
+      "passed": true,
+      "detail": "README explains use in natural language"
+    },
+    {
+      "check_id": "readme:evaluation",
+      "passed": true,
+      "detail": "README describes evaluation status or results"
+    },
+    {
+      "check_id": "readme:community",
+      "passed": true,
+      "detail": "README links to LINUX DO"
+    },
+    {
+      "check_id": "readme:license",
+      "passed": true,
+      "detail": "README names the Apache license"
+    },
+    {
+      "check_id": "readme:local-links",
+      "passed": true,
+      "detail": "all local README links resolve"
+    },
+    {
+      "check_id": "license:apache-2.0",
+      "passed": true,
+      "detail": "LICENSE contains the complete Apache License 2.0 terms"
+    },
+    {
+      "check_id": "agent:default-prompt",
+      "passed": true,
+      "detail": "agents/openai.yaml default prompt names the Skill"
+    },
+    {
+      "check_id": "evals:critical-gate",
+      "passed": true,
+      "detail": "evaluation rubric defines a critical-failure gate"
+    }
+  ]
+}

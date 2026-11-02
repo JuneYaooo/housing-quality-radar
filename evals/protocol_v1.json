@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "suite": "housing-quality-radar-v1",
+  "rule_layer": {
+    "case_file": "cases_v1.jsonl",
+    "runner": "scripts/run_rule_cases.py",
+    "conditions": ["before_v0.2_rules", "after_v0.3_metrics"],
+    "before_definition": "rules as written in references/analysis.md at commit 15d4c71, re-implemented because v0.2 had no metrics code",
+    "judging": "deterministic expected fields; cases authored together with v0.3 rules, so this is regression evidence, not accuracy",
+    "current_run": {"status": "completed", "date": "2026-11-02", "output": "rules-v0.3/summary.json"}
+  },
+  "end_to_end": {
+    "rubric_file": "rubric_v1.md",
+    "planned_conditions": ["v0.2 skill", "v0.3 skill"],
+    "same_input": "same district, same window, same data source, same day",
+    "runs_per_condition": 3,
+    "blind_condition_labels": true,
+    "current_run": {
+      "status": "not_run",
+      "blocker": "2026-11-02: Xiaohongshu posts redirect to error_code=300031 without login; opencli browser extension not connected; no TikHub key configured; no TYPESAFE_API_KEY"
+    }
+  }
+}

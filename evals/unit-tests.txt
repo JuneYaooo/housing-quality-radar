@@ -1,6 +1,28 @@
+test_rejects_bad_input (test_listing_metrics.Cli.test_rejects_bad_input) ... ok
+test_sanlin_replay_and_new_file_only (test_listing_metrics.Cli.test_sanlin_replay_and_new_file_only) ... ok
+test_exclusions_basis_area_type_stale (test_listing_metrics.Comparables.test_exclusions_basis_area_type_stale) ... ok
+test_fewer_than_three_is_insufficient (test_listing_metrics.Comparables.test_fewer_than_three_is_insufficient) ... ok
+test_five_gives_type7_quantiles (test_listing_metrics.Comparables.test_five_gives_type7_quantiles) ... ok
+test_missing_property_ids_do_not_exclude_everything (test_listing_metrics.Comparables.test_missing_property_ids_do_not_exclude_everything) ... ok
+test_one_property_one_quote_latest_wins (test_listing_metrics.Comparables.test_one_property_one_quote_latest_wins) ... ok
+test_three_or_four_gives_range_not_quantiles (test_listing_metrics.Comparables.test_three_or_four_gives_range_not_quantiles) ... ok
+test_censoring_raises_median_versus_exited_only (test_listing_metrics.ExitTime.test_censoring_raises_median_versus_exited_only) ... ok
+test_km_median_when_curve_crosses_half (test_listing_metrics.ExitTime.test_km_median_when_curve_crosses_half) ... ok
+test_certificate_area_is_building_basis (test_listing_metrics.PriceParsing.test_certificate_area_is_building_basis) ... ok
+test_title_body_conflict_blocks_exact_price (test_listing_metrics.PriceParsing.test_title_body_conflict_blocks_exact_price) ... ok
+test_units_and_precision (test_listing_metrics.PriceParsing.test_units_and_precision) ... ok
+test_monthly_service_fee_raises_cost (test_listing_metrics.RentCostAndPayment.test_monthly_service_fee_raises_cost) ... ok
+test_one_time_fee_amortised_and_unknown_fee_marks_at_least (test_listing_metrics.RentCostAndPayment.test_one_time_fee_amortised_and_unknown_fee_marks_at_least) ... ok
+test_payment_flags (test_listing_metrics.RentCostAndPayment.test_payment_flags) ... ok
+test_standard_terms_raise_nothing (test_listing_metrics.RentCostAndPayment.test_standard_terms_raise_nothing) ... ok
+test_payload_settings_override_and_unknown_rejected (test_listing_metrics.Settings.test_payload_settings_override_and_unknown_rejected) ... ok
+test_agent_without_code_flagged_but_not_fake (test_listing_metrics.Verification.test_agent_without_code_flagged_but_not_fake) ... ok
+test_other_city_has_no_regime (test_listing_metrics.Verification.test_other_city_has_no_regime) ... ok
+test_rent_code_older_than_60_days_possibly_expired (test_listing_metrics.Verification.test_rent_code_older_than_60_days_possibly_expired) ... ok
 test_bad_provider_shapes_require_review (test_triage.TriageTests.test_bad_provider_shapes_require_review) ... ok
 test_cli_modes_and_legacy_alias_without_credentials (test_triage.TriageTests.test_cli_modes_and_legacy_alias_without_credentials) ... ok
 test_cli_rejects_conflicting_modes (test_triage.TriageTests.test_cli_rejects_conflicting_modes) ... ok
+test_contradictory_labels_require_review (test_triage.TriageTests.test_contradictory_labels_require_review) ... ok
 test_disabled_never_calls_provider (test_triage.TriageTests.test_disabled_never_calls_provider) ... ok
 test_fabricated_label_not_accepted (test_triage.TriageTests.test_fabricated_label_not_accepted) ... ok
 test_high_confidence_is_not_authenticity (test_triage.TriageTests.test_high_confidence_is_not_authenticity) ... ok
@@ -8,10 +30,11 @@ test_history_and_generic_retained_for_review (test_triage.TriageTests.test_histo
 test_http_failure_stops_without_retry (test_triage.TriageTests.test_http_failure_stops_without_retry) ... ok
 test_invalid_and_low_confidence_require_review (test_triage.TriageTests.test_invalid_and_low_confidence_require_review) ... ok
 test_missing_key_keeps_every_record (test_triage.TriageTests.test_missing_key_keeps_every_record) ... ok
+test_pii_text_is_never_sent (test_triage.TriageTests.test_pii_text_is_never_sent) ... ok
 test_request_cap_preserves_tail (test_triage.TriageTests.test_request_cap_preserves_tail) ... ok
 test_timeout_preserves_tail (test_triage.TriageTests.test_timeout_preserves_tail) ... ok
 
 ----------------------------------------------------------------------
-Ran 12 tests in 0.187s
+Ran 35 tests in 0.249s
 
 OK

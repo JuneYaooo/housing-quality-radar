@@ -1,0 +1,173 @@
+{
+  "rules_version": "metrics-2026-11-v1",
+  "as_of": "2026-09-21",
+  "settings": {
+    "area_tolerance": 0.15,
+    "max_comp_age_days": 90,
+    "min_comps_for_range": 3,
+    "min_comps_for_quantiles": 5,
+    "max_prepay_months": 3,
+    "max_deposit_months": 1
+  },
+  "listings": [
+    {
+      "post_id": "6aacf45b000000001203555e",
+      "property_id": "sanlin-lvbo-2r",
+      "transaction_type": "sale",
+      "price": {
+        "status": "exact",
+        "yuan": 2680000.0,
+        "range": null
+      },
+      "area": {
+        "sqm": 67.19,
+        "basis": "building",
+        "raw_basis": "建筑面积"
+      },
+      "unit_price_yuan_per_sqm": 39886.89,
+      "comparables": {
+        "metric": "unit_price_yuan_per_sqm",
+        "target": 39886.89,
+        "n": 1,
+        "comparable_ids": [
+          "sanlin-shanlin-2r"
+        ],
+        "excluded": [
+          {
+            "property_id": "sanlin-jiangjin-1r",
+            "excluded_for": "transaction_type"
+          },
+          {
+            "property_id": null,
+            "excluded_for": "area_basis"
+          }
+        ],
+        "price_kind": "listing_quote_not_transaction",
+        "status": "insufficient",
+        "note": "可比样本不足：仅逐套对照，不给区间或折价结论"
+      },
+      "payment_flags": [],
+      "verification_code": {
+        "status": "not_shown",
+        "lookup": "https://zfzl.fgj.sh.gov.cn/",
+        "note": "未展示核验码不等于假房源；请向发布方索取并在官方平台查验"
+      },
+      "review_flags": []
+    },
+    {
+      "post_id": "6ab08646000000002803b0dd",
+      "property_id": "sanlin-shanlin-2r",
+      "transaction_type": "sale",
+      "price": {
+        "status": "exact",
+        "yuan": 3350000.0,
+        "range": null
+      },
+      "area": {
+        "sqm": 71.0,
+        "basis": "building",
+        "raw_basis": "产证面积"
+      },
+      "unit_price_yuan_per_sqm": 47183.1,
+      "comparables": {
+        "metric": "unit_price_yuan_per_sqm",
+        "target": 47183.1,
+        "n": 1,
+        "comparable_ids": [
+          "sanlin-lvbo-2r"
+        ],
+        "excluded": [
+          {
+            "property_id": "sanlin-jiangjin-1r",
+            "excluded_for": "transaction_type"
+          },
+          {
+            "property_id": null,
+            "excluded_for": "area_basis"
+          }
+        ],
+        "price_kind": "listing_quote_not_transaction",
+        "status": "insufficient",
+        "note": "可比样本不足：仅逐套对照，不给区间或折价结论"
+      },
+      "payment_flags": [],
+      "verification_code": {
+        "status": "not_shown",
+        "lookup": "https://zfzl.fgj.sh.gov.cn/",
+        "note": "未展示核验码不等于假房源；请向发布方索取并在官方平台查验"
+      },
+      "review_flags": []
+    },
+    {
+      "post_id": "6aaab271000000002902f0c2",
+      "property_id": "sanlin-jiangjin-1r",
+      "transaction_type": "rent",
+      "price": {
+        "status": "absent",
+        "yuan": null,
+        "range": null
+      },
+      "area": {
+        "sqm": 65.0,
+        "basis": "unknown",
+        "raw_basis": "自述"
+      },
+      "unit_price_yuan_per_sqm": null,
+      "comparables": {
+        "status": "target_not_comparable",
+        "n": 0,
+        "reason": "target price or area basis not established"
+      },
+      "payment_flags": [],
+      "verification_code": {
+        "status": "not_shown",
+        "lookup": "https://zfzl.fgj.sh.gov.cn/",
+        "note": "未展示核验码不等于假房源；请向发布方索取并在官方平台查验"
+      },
+      "monthly_cost": {
+        "status": "rent_absent",
+        "known_minimum": null,
+        "unknown_fees": [
+          "monthly_service"
+        ]
+      },
+      "review_flags": [
+        "price_absent"
+      ]
+    },
+    {
+      "post_id": "6aaa650c0000000025036152",
+      "property_id": null,
+      "transaction_type": "sale",
+      "price": {
+        "status": "conflict",
+        "yuan": null,
+        "range": [
+          2250000.0,
+          2280000.0
+        ]
+      },
+      "area": {
+        "sqm": null,
+        "basis": "unknown",
+        "raw_basis": null
+      },
+      "unit_price_yuan_per_sqm": null,
+      "comparables": {
+        "status": "target_not_comparable",
+        "n": 0,
+        "reason": "target price or area basis not established"
+      },
+      "payment_flags": [],
+      "verification_code": {
+        "status": "not_shown",
+        "lookup": "https://zfzl.fgj.sh.gov.cn/",
+        "note": "未展示核验码不等于假房源；请向发布方索取并在官方平台查验"
+      },
+      "review_flags": [
+        "price_conflict",
+        "area_basis_unknown"
+      ]
+    }
+  ]
+}

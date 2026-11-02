@@ -40,6 +40,25 @@
 
 所有入口统一遵循 [source-adapters.md](source-adapters.md) 的跨来源字段与缓存语义。缓存复用不是新的房源观察；匿名作者字段不得伪装为真实账号标识。runs 额外记录 `provider_attempts`、`capabilities_succeeded`、`cache_items` 与 `missing_layers`。
 
+## 结构化房源输入（listing_metrics）
+
+每次排序前，Agent 把当前去重房源整理为 `listings-<run_id>.json`：`{"as_of": "YYYY-MM-DD", "listings": [...], "exit_durations": [...]}`。每条房源：
+
+| 字段 | 说明 |
+| --- | --- |
+| `post_id`、`property_id` | 稳定 ID；同一房源多条报价时 `property_id` 相同，脚本只取最近观察 |
+| `city`、`community`、`transaction_type`（rent/sale）、`layout` | `layout` 用同一写法（如“2室”）才会被视为同户型 |
+| `observed_on`、`published_on` | 日期；`published_on` 未知为 null |
+| `price_claims` | `[{source: title/body/comment, raw: "268万元"}]`，标题和正文都保留，脚本判断冲突 |
+| `area` | `{value, basis}`，basis 用原文：建筑面积/产证面积/套内面积/使用面积/自述 |
+| `fees` | 租房费用；`monthly_*` 为每月必付，`one_time_*` 为不可退一次性费用，未知写 null |
+| `planned_months` | 计划居住月数，用于摊销一次性费用 |
+| `payment` | `prepay_months`、`deposit_months`、`payee`（landlord/agent/platform/unknown）、`pay_before_viewing`、`untraceable_payment`、`rent_loan` |
+| `publisher_role` | individual/agent/institution/self_claimed_owner/unknown |
+| `verification_code` | 帖子展示的核验编号或 "shown"；未展示为 null。不要写入用户隐私 |
+
+`exit_durations` 每条为 `{days, exited}`：`exited=true` 仅用于明确的“已租/已售”观察；仍在、删除、不可见都写 `false`（右删失）。
+
 ## 文本初筛记录
 
 可选 `triage-<run_id>.jsonl` 保存 scripts/triage.py 输出，按 post_id 关联原始证据；labels 仅为模型推断。保留请求/实际模型、文本/问题哈希、usage、耗时和复核原因，不保存密钥。`requires_evidence_review` 与 `triage_review_required` 分开：前者对所有房源为 true，后者仅指初筛文本是否需要额外处理。

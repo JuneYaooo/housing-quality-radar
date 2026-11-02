@@ -102,6 +102,25 @@ class TriageTests(unittest.TestCase):
         self.assertNotIn('intent', rows[0]['labels'])
         self.assertIn('intent:invalid_answer', rows[0]['review_reasons'])
 
+    def test_pii_text_is_never_sent(self):
+        def fail(*args):
+            self.fail('PII text sent to provider')
+        records = [{'post_id': 'a', 'text': '房东直租，电话13812345678'}, {'post_id': 'b', 'text': '加微信: abc_12345 看房'}]
+        rows = triage.run(records, enabled=True, request=fail)
+        self.assertEqual(rows[0]['review_reasons'], ['pii_suspected_not_sent:mobile'])
+        self.assertEqual(rows[1]['review_reasons'], ['pii_suspected_not_sent:wechat_id'])
+        self.assertNotIn('13812345678', json.dumps(rows, ensure_ascii=False))
+
+    def test_contradictory_labels_require_review(self):
+        raw = response()
+        raw['answers']['intent']['choice'] = 'demand'
+        labels, reasons = triage.interpret(raw, json.loads((ROOT / 'assets/jev-questions.json').read_text()), .8)
+        self.assertIn('label_conflict', reasons)
+        raw = response()
+        raw['answers']['inventory']['choice'] = 'not_applicable'
+        self.assertIn('label_conflict', triage.interpret(raw, json.loads((ROOT / 'assets/jev-questions.json').read_text()), .8)[1])
+        self.assertNotIn('label_conflict', triage.interpret(response(), json.loads((ROOT / 'assets/jev-questions.json').read_text()), .8)[1])
+
     def test_cli_modes_and_legacy_alias_without_credentials(self):
         env = os.environ.copy()
         env.pop('TYPESAFE_API_KEY', None)

@@ -6,8 +6,10 @@ Python辅助脚本要求3.10+，仅使用标准库。Skill主体由宿主Agent�
 
 ```bash
 git clone https://github.com/JuneYaooo/housing-quality-radar.git \
-  ~/.codex/skills/xiaohongshu-housing-radar
+  ~/.codex/skills/housing-quality-radar
 ```
+
+v0.3.0 起技能目录名从 `xiaohongshu-housing-radar` 改为 `housing-quality-radar`，与仓库名一致。安装器会把旧目录移到 `skill-backups/` 后再安装新名字；手动克隆的用户请自行删除或改名旧目录，避免同一个 Skill 被加载两次。
 
 已有同名目录先检查自己的修改，再更新。也可克隆到工作目录后运行 `bash install_as_skill.sh`；安装器会备份原安装，默认目标 `${CODEX_HOME:-$HOME/.codex}/skills`，可用首个参数指定目标父目录。
 
@@ -41,6 +43,21 @@ python3 scripts/triage.py /absolute/path/redacted-input.jsonl \
 
 输出中的mode表示请求模式，review_reasons表示降级/待复核原因；缺Key时不能将请求模式误报为实际成功调用。`triage_policy=shadow`表示初筛只提供标签，候选全量保留。
 
+## 规则计算（两种模式通用）
+
+Agent 把去重后的房源整理成结构化 JSON（字段见 [data-model.md](../references/data-model.md) 的“结构化房源输入”），再运行：
+
+```bash
+python3 scripts/listing_metrics.py housing-radar/<watch_id>/listings-<run_id>.json \
+  --output housing-radar/<watch_id>/metrics-<run_id>.json --summary
+```
+
+输出报价冲突、月均必要成本、单价、可比分级（<3 不比较 / 3–4 区间 / ≥5 分位）、付款旗标、核验码状态和 Kaplan–Meier 退出时长。阈值可在输入的 `settings` 中覆盖，键名见脚本 `DEFAULTS`。三林回放示例：
+
+```bash
+python3 scripts/listing_metrics.py evals/sanlin-20260921/v0.3/listings-input.json --summary > /dev/null
+```
+
 ## 数据与采集
 
 运行数据保存在用户工作目录 `housing-radar/<watch_id>/`。浏览器成功后不为同一字段重复调用付费采集；外部工具需单独安装。[来源适配](../references/source-adapters.md) · [决策与复核规则](../references/decision-pipeline.md)
@@ -49,6 +66,9 @@ python3 scripts/triage.py /absolute/path/redacted-input.jsonl \
 
 ```bash
 python3 -m unittest discover -s tests -v
+python3 evals/scripts/run_rule_cases.py
 ```
+
+`run_rule_cases.py` 用同一批 19 例比较 v0.2 书面规则与 v0.3.0 代码，结果写入 `evals/rules-v0.3/`。
 
 README中的真实案例来自已有浏览器采集证据，不是此脚本生成的模型推断。单测用模拟响应验证程序边界，不作为真实找房效果展示。评测记录在`evals/`，运行缓存放`runs/`且不提交。

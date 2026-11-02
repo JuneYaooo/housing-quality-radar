@@ -34,12 +34,15 @@
     "history_per_account": 20
   },
   "heuristics": {
-    "version": "1-initial-unvalidated",
+    "version": "2-researched-2026-11",
     "concurrent_window_hours": 72,
     "long_exposure_rent_days": 30,
     "long_exposure_sale_days": 90,
     "min_price_comparables": 5,
-    "min_exit_samples_for_quantiles": 10
+    "min_exit_samples_for_quantiles": 10,
+    "min_comparables_for_range": 3,
+    "comparable_area_tolerance": 0.15,
+    "comparable_max_age_days": 90
   },
   "schedule": {
     "enabled": false,
@@ -79,5 +82,9 @@
     "auto_reject": false,
     "external_verification_required": true,
     "mode": "agent"
+  },
+  "payment_flags": {
+    "max_prepay_months": 3,
+    "max_deposit_months": 1
   }
 }

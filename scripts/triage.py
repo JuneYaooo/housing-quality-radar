@@ -6,12 +6,24 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import time
 import urllib.error
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 ENDPOINT = 'https://api.typesafe.ai/v1/systemone'
+# Minimal pre-send guard (PIPL data minimisation): mainland mobile numbers, 18-digit
+# resident ID numbers and WeChat IDs stay local. This is not a full redactor.
+PII_PATTERNS = {
+    'mobile': re.compile(r'(?<!\d)1[3-9]\d{9}(?!\d)'),
+    'resident_id': re.compile(r'(?<!\d)\d{17}[\dXx](?!\d)'),
+    'wechat_id': re.compile(r'(?:微信|vx|VX|wx|WX|v信)[:：\s]*[A-Za-z][-_A-Za-z0-9]{5,19}'),
+}
+
+
+def pii_hits(text):
+    return sorted(name for name, pattern in PII_PATTERNS.items() if pattern.search(text))
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -52,6 +64,13 @@ def interpret(response, questions, threshold):
         reasons.append('current_exact_price_not_established')
     if labels.get('inventory', {}).get('choice') != 'single':
         reasons.append('single_property_not_established')
+    intent = labels.get('intent', {}).get('choice')
+    price = labels.get('price_disclosure', {}).get('choice')
+    inventory = labels.get('inventory', {}).get('choice')
+    if (intent == 'demand' and price in ('exact', 'approximate', 'historical_only')) or \
+            (intent in ('rent_supply', 'sale_supply') and inventory == 'not_applicable') or \
+            (intent in ('demand', 'other') and inventory in ('single', 'multiple_or_generic')):
+        reasons.append('label_conflict')
     return labels, reasons
 
 
@@ -66,8 +85,11 @@ def run(records, *, enabled=False, model='jev-latest', threshold=0.8, max_reques
                'source_sha256': hashlib.sha256(text.encode()).hexdigest(),
                'questions_sha256': hashlib.sha256(json.dumps(questions, sort_keys=True).encode()).hexdigest(),
                'model_requested': model, 'model_resolved': None, 'labels': {}}
+        hits = pii_hits(text) if enabled else []
         if not enabled:
             row['review_reasons'] = ['jev_disabled']
+        elif hits:
+            row['review_reasons'] = ['pii_suspected_not_sent:' + ','.join(hits)]
         elif not key:
             row['review_reasons'] = ['missing_api_key']
         elif stopped:

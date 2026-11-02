@@ -1,17 +1,30 @@
 {
-  "version": "explicit-modes-v2",
-  "python": "3.13.2",
-  "unit_tests_passed": 12,
+  "version": "0.3.0",
+  "date": "2026-11-02",
+  "python": "3.12.9",
+  "unit_tests_passed": 35,
+  "rule_cases": {
+    "before_v0.2_rules": "9/19",
+    "after_v0.3_metrics": "19/19"
+  },
+  "template_validator": "24/24 PASS",
   "cli_mode": "agent",
   "records": 4,
   "retained": 4,
+  "agent_queue_identical_to_v0.2": true,
   "live_jev_calls_this_revision": 0,
-  "installer_isolated_target": "passed",
+  "live_platform_retrieval_this_revision": 0,
+  "installer_isolated_target": "passed (fresh install, reinstall backup, legacy-name migration)",
   "sha256": {
-    "scripts/triage.py": "170b5d5ae964de8a4ff5d96ac91ea268234188d71e87bc39405eb867bb6f717d",
+    "scripts/triage.py": "83e526eefe36c891d85b1954d83506f23f21040065022bd699fa3e4f5714805f",
+    "scripts/listing_metrics.py": "8ea3637b0b443c49559d2ff2484f548fd0cb54b82f5602c7ebab639477e29d45",
     "assets/jev-questions.json": "41701cf81bb39733e244cfd5a20d0c5519a285b7f1466dcf029dc2e8517aa25a",
-    "evals/sanlin-20260921/triage-input.jsonl": "9a3c4a0f7deadf1693c278ce031e0ef9ebe0ab8cc61bd35836163916d64a19e7",
-    "evals/sanlin-20260921/agent-queue.jsonl": "5e47fc3ea540731d7a29b923bd6ad8ed6abaea038bd06cf913f7ef360e8a9a65",
+    "evals/cases_v1.jsonl": "3678163b82f5b9fede0793a7e126e1a96960504b096c2d8c59c5f8a22ee90943",
+    "evals/rules-v0.3/summary.json": "c40f2a5192b6f9e334c941e40a8c631a42c65592f937d723115ba8a707cb4b4c",
+    "evals/sanlin-20260921/v0.3/listing-metrics.json": "7862bba21d2884d9db391aa2f561f1a7ec64884e9bcc68e70d99cb8a475b1c7d",
+    "evals/sanlin-20260921/v0.3/agent-queue.jsonl": "5e47fc3ea540731d7a29b923bd6ad8ed6abaea038bd06cf913f7ef360e8a9a65",
+    "docs/assets/sanlin-v0.3-metrics.png": "eb29044734fc0cbc13d6c331f023b8fcd0cd1a08b25daa756a01f5ae1a3aae5d",
+    "docs/assets/rules-before-after.png": "b8f83e18f820f6922fcf3372875d7f4e45acbbd88cf3b3207942125ac21729fc",
     "docs/assets/sanlin-result.png": "76e440a5b229cb4dec6ce6364680626298b929b2b3b6524e81edc893fa12fee0"
   }
 }

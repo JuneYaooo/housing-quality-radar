@@ -1,5 +1,11 @@
 # 评测与已知限制
 
+## v0.3.0 规则层改前/改后 · 2026-11-02
+
+依据 [对标调研](../references/benchmarks.md) 新增 `scripts/listing_metrics.py`。19 例规则回归在同一输入上运行：v0.2 书面规则 9/19（Wilson 95% 0.273–0.683），其中 hard/adversarial 失败 7 例；v0.3.0 代码 19/19（0.832–1.000）。失败集中在 v0.2 没有覆盖的维度：付款条款、核验码、Kaplan–Meier 删失、3–4 个可比的区间、产证面积口径。样例与新规则同源编写，只作回归证据。详见 [evals/iteration_notes.md](../evals/iteration_notes.md)。
+
+本版没有新的平台采集和 Jev 调用；端到端报告评测状态为 not_run，阻塞原因写在 [protocol_v1.json](../evals/protocol_v1.json)。
+
 ## 前期真实 API 冒烟测试 · 2026-09-21
 
 6条从可见房源材料人工整理的中文文本，提前设置供需、报价披露、单套/泛化库存标签；额外测试一个产权核验 Noul 问题。请求 jev-latest，返回 jev-1.13.0。6次均成功，无重试。
