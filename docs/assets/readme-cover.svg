@@ -1,87 +1,261 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
-  <title id="title">优质房子筛选器 · Housing Quality Radar</title>
-  <desc id="desc">在小红书上按区域筛选租房和二手房帖子，附原帖证据、同类报价对照和风险提示</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
+  <title id="title">优质房子筛选器</title>
+  <desc id="desc">一台找房雷达扫过小区楼群，把小红书房源分成优先核验、补齐信息和报价冲突三类。</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FBF8F2"/>
-      <stop offset="1" stop-color="#F1ECE1"/>
+      <stop offset="0" stop-color="#FDF9F1"/>
+      <stop offset="0.55" stop-color="#F4F7F0"/>
+      <stop offset="1" stop-color="#E3F0EA"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#1F7A6B" stop-opacity="0.16"/>
-      <stop offset="1" stop-color="#1F7A6B" stop-opacity="0"/>
+    <radialGradient id="glowTeal" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7CC7B2" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7CC7B2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowPeach" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFC9A8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFC9A8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="disc" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#1F7A6B"/>
+      <stop offset="0.7" stop-color="#155D52"/>
+      <stop offset="1" stop-color="#0E443C"/>
     </radialGradient>
     <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#1F7A6B" stop-opacity="0"/>
-      <stop offset="1" stop-color="#1F7A6B" stop-opacity="0.28"/>
+      <stop offset="0" stop-color="#9BF0D2" stop-opacity="0"/>
+      <stop offset="1" stop-color="#9BF0D2" stop-opacity="0.55"/>
     </linearGradient>
-    <clipPath id="card"><rect width="1200" height="420" rx="20"/></clipPath>
+    <linearGradient id="bldA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E9480"/>
+      <stop offset="1" stop-color="#1A6A5C"/>
+    </linearGradient>
+    <linearGradient id="bldB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3FA891"/>
+      <stop offset="1" stop-color="#21796A"/>
+    </linearGradient>
+    <linearGradient id="thumbG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DDF1E9"/>
+      <stop offset="1" stop-color="#BFE3D6"/>
+    </linearGradient>
+    <linearGradient id="thumbA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF1D6"/>
+      <stop offset="1" stop-color="#FBD9A0"/>
+    </linearGradient>
+    <linearGradient id="thumbR" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFE3DF"/>
+      <stop offset="1" stop-color="#FDBDB4"/>
+    </linearGradient>
+    <linearGradient id="titleG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#123F37"/>
+      <stop offset="1" stop-color="#1F7A6B"/>
+    </linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#1F5F54" fill-opacity="0.09"/>
+    </pattern>
+    <clipPath id="radarClip"><circle cx="960" cy="270" r="200"/></clipPath>
+    <clipPath id="frame"><rect width="1280" height="560" rx="28"/></clipPath>
+    <filter id="cardShadow" x="-25%" y="-30%" width="150%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#173C35" flood-opacity="0.16"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#173C35" flood-opacity="0.08"/>
+    </filter>
+    <filter id="discShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0E443C" flood-opacity="0.30"/>
+    </filter>
+    <filter id="blipGlow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#173C35" flood-opacity="0.10"/>
+    </filter>
   </defs>
 
-  <rect width="1200" height="420" rx="20" fill="url(#bg)"/>
-  <rect x="0" y="0" width="1200" height="6" fill="#1F7A6B" clip-path="url(#card)"/>
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="560" fill="url(#bg)"/>
+    <rect width="1280" height="560" fill="url(#dots)"/>
+    <circle cx="1010" cy="140" r="360" fill="url(#glowTeal)"/>
+    <circle cx="120" cy="560" r="300" fill="url(#glowPeach)"/>
+    <circle cx="560" cy="-40" r="200" fill="url(#glowPeach)" opacity="0.6"/>
+  </g>
 
-  <!-- left text -->
+  <!-- ===== left: copy ===== -->
   <g font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
-    <rect x="72" y="70" width="256" height="32" rx="16" fill="#E3EFEC"/>
-    <circle cx="92" cy="86" r="5" fill="#1F7A6B"/>
-    <text x="106" y="92" fill="#1F7A6B" font-size="15" font-weight="600" letter-spacing="1">AGENT SKILL · 小红书找房</text>
+    <g transform="translate(80 92)">
+      <rect width="262" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.85" stroke="#1F7A6B" stroke-opacity="0.18" filter="url(#soft)"/>
+      <circle cx="22" cy="18" r="5" fill="#1F7A6B"/>
+      <circle cx="22" cy="18" r="9" fill="none" stroke="#1F7A6B" stroke-opacity="0.25" stroke-width="2"/>
+      <text x="40" y="24" font-size="15" font-weight="600" fill="#1F5F54" letter-spacing="1">AGENT SKILL · 小红书找房</text>
+    </g>
 
-    <text x="70" y="178" fill="#16202A" font-size="62" font-weight="700" letter-spacing="2">优质房子筛选器</text>
-    <text x="74" y="216" fill="#7A8580" font-size="20" font-weight="500" letter-spacing="3">HOUSING QUALITY RADAR</text>
+    <text x="78" y="214" font-size="68" font-weight="800" fill="url(#titleG)" letter-spacing="4">优质房子筛选器</text>
+    <text x="82" y="252" font-size="16" font-weight="600" fill="#5E8C82" letter-spacing="6">HOUSING QUALITY RADAR</text>
 
-    <text x="74" y="270" fill="#3D4A47" font-size="22">按区域筛选租房、二手房帖子，告诉你先看哪几套，</text>
-    <text x="74" y="304" fill="#3D4A47" font-size="22">并附上原帖证据、同类报价对照和风险提示。</text>
+    <text font-size="21" fill="#3B4F4A">
+      <tspan x="80" y="312">按区域读小红书上的租房、二手房帖子，</tspan>
+      <tspan x="80" y="346">告诉你<tspan font-weight="700" fill="#1F7A6B">先看哪几套、为什么</tspan>，还要确认什么。</tspan>
+    </text>
 
+    <!-- feature chips -->
     <g font-size="15" font-weight="600">
-      <rect x="74" y="336" width="128" height="34" rx="8" fill="#1F7A6B"/>
-      <text x="138" y="358" fill="#FFFFFF" text-anchor="middle">优先看房清单</text>
-      <rect x="214" y="336" width="128" height="34" rx="8" fill="#FFFFFF" stroke="#D9D3C6"/>
-      <text x="278" y="358" fill="#2E3A37" text-anchor="middle">同口径比价</text>
-      <rect x="354" y="336" width="128" height="34" rx="8" fill="#FFFFFF" stroke="#D9D3C6"/>
-      <text x="418" y="358" fill="#2E3A37" text-anchor="middle">付款风险提示</text>
-      <rect x="494" y="336" width="128" height="34" rx="8" fill="#FFFFFF" stroke="#D9D3C6"/>
-      <text x="558" y="358" fill="#2E3A37" text-anchor="middle">待确认问题</text>
+      <g transform="translate(80 392)">
+        <rect width="150" height="44" rx="22" fill="#1F7A6B" filter="url(#soft)"/>
+        <g transform="translate(18 12)" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="1" width="16" height="19" rx="3"/>
+          <path d="M5 8 l2.5 2.5 L13 5"/>
+          <path d="M5 15 h8"/>
+        </g>
+        <text x="46" y="28" fill="#FFFFFF">先看哪几套</text>
+      </g>
+      <g transform="translate(242 392)">
+        <rect width="150" height="44" rx="22" fill="#FFFFFF" stroke="#1F7A6B" stroke-opacity="0.2" filter="url(#soft)"/>
+        <g transform="translate(18 13)" fill="none" stroke="#1F7A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 1 v17 M3 18 h14"/>
+          <path d="M2 6 h16"/>
+          <path d="M2 6 l-2 6 h5 z M18 6 l-2 6 h5 z"/>
+        </g>
+        <text x="46" y="28" fill="#1F5F54">同口径比价</text>
+      </g>
+      <g transform="translate(404 392)">
+        <rect width="150" height="44" rx="22" fill="#FFFFFF" stroke="#E0533F" stroke-opacity="0.25" filter="url(#soft)"/>
+        <g transform="translate(18 12)" fill="none" stroke="#E0533F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 1 L19 18 H1 Z"/>
+          <path d="M10 7 v5"/>
+          <circle cx="10" cy="15" r="0.6" fill="#E0533F"/>
+        </g>
+        <text x="46" y="28" fill="#B33C2B">付款风险提示</text>
+      </g>
+      <g transform="translate(80 448)">
+        <rect width="150" height="44" rx="22" fill="#FFFFFF" stroke="#D99A2B" stroke-opacity="0.3" filter="url(#soft)"/>
+        <g transform="translate(18 12)" fill="none" stroke="#C7871A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3 h16 v11 h-9 l-4 4 v-4 h-3 z"/>
+          <path d="M8 7 q2 -2 4 0 q0 2 -2 2.5 v1"/>
+        </g>
+        <text x="46" y="28" fill="#9A6510">待确认问题</text>
+      </g>
+      <g transform="translate(242 448)">
+        <rect width="150" height="44" rx="22" fill="#FFFFFF" stroke="#1F7A6B" stroke-opacity="0.2" filter="url(#soft)"/>
+        <g transform="translate(18 12)" fill="none" stroke="#1F7A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 11 a4 4 0 0 0 5.6 0 l3 -3 a4 4 0 0 0 -5.6 -5.6 l-1.2 1.2"/>
+          <path d="M12 9 a4 4 0 0 0 -5.6 0 l-3 3 a4 4 0 0 0 5.6 5.6 l1.2 -1.2"/>
+        </g>
+        <text x="46" y="28" fill="#1F5F54">附原帖链接</text>
+      </g>
+      <g transform="translate(404 448)">
+        <rect width="150" height="44" rx="22" fill="#FFFFFF" stroke="#1F7A6B" stroke-opacity="0.2" filter="url(#soft)"/>
+        <g transform="translate(18 12)" fill="none" stroke="#1F7A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 10 q9 -10 18 0 q-9 10 -18 0 z"/>
+          <circle cx="10" cy="10" r="3"/>
+        </g>
+        <text x="46" y="28" fill="#1F5F54">只读不代办</text>
+      </g>
     </g>
   </g>
 
-  <!-- radar -->
-  <g transform="translate(925 210)">
-    <circle r="190" fill="url(#glow)"/>
-    <circle r="160" fill="none" stroke="#C9D9D4" stroke-width="1.5"/>
-    <circle r="112" fill="none" stroke="#C9D9D4" stroke-width="1.5"/>
-    <circle r="64" fill="none" stroke="#C9D9D4" stroke-width="1.5"/>
-    <line x1="-170" y1="0" x2="170" y2="0" stroke="#DCE6E2" stroke-width="1"/>
-    <line x1="0" y1="-170" x2="0" y2="170" stroke="#DCE6E2" stroke-width="1"/>
-    <path d="M0 0 L160 0 A160 160 0 0 0 113 -113 Z" fill="url(#sweep)" transform="rotate(-8)"/>
-    <line x1="0" y1="0" x2="158" y2="-22" stroke="#1F7A6B" stroke-width="2" stroke-linecap="round"/>
+  <!-- ===== right: radar illustration ===== -->
+  <circle cx="960" cy="270" r="250" fill="none" stroke="#1F7A6B" stroke-opacity="0.10" stroke-width="1.5"/>
+  <circle cx="960" cy="270" r="226" fill="none" stroke="#1F7A6B" stroke-opacity="0.16" stroke-width="1.5" stroke-dasharray="3 7"/>
+  <circle cx="960" cy="270" r="210" fill="#FFFFFF" fill-opacity="0.6" filter="url(#discShadow)"/>
+  <circle cx="960" cy="270" r="200" fill="url(#disc)"/>
 
-    <!-- house -->
-    <circle r="40" fill="#FFFFFF" stroke="#1F7A6B" stroke-width="2"/>
-    <path d="M-20 2 L0 -18 L20 2" fill="none" stroke="#1F7A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M-14 -2 V18 H14 V-2" fill="none" stroke="#1F7A6B" stroke-width="3.5" stroke-linejoin="round"/>
-    <rect x="-4" y="6" width="8" height="12" rx="1" fill="#1F7A6B"/>
+  <g clip-path="url(#radarClip)">
+    <!-- grid -->
+    <g fill="none" stroke="#9BF0D2" stroke-opacity="0.22" stroke-width="1.2">
+      <circle cx="960" cy="270" r="66"/>
+      <circle cx="960" cy="270" r="133"/>
+      <path d="M760 270 H1160 M960 70 V470"/>
+      <path d="M818 128 L1102 412 M1102 128 L818 412" stroke-opacity="0.10"/>
+    </g>
+    <!-- skyline -->
+    <g>
+      <rect x="770" y="330" width="46" height="160" rx="4" fill="url(#bldA)"/>
+      <rect x="822" y="292" width="58" height="200" rx="5" fill="url(#bldB)"/>
+      <rect x="886" y="350" width="40" height="140" rx="4" fill="url(#bldA)"/>
+      <rect x="1000" y="308" width="54" height="190" rx="5" fill="url(#bldB)"/>
+      <rect x="1060" y="342" width="44" height="150" rx="4" fill="url(#bldA)"/>
+      <rect x="1110" y="300" width="52" height="190" rx="5" fill="url(#bldB)"/>
+      <g fill="#CFF7E9" fill-opacity="0.55">
+        <rect x="832" y="306" width="10" height="8" rx="1.5"/><rect x="848" y="306" width="10" height="8" rx="1.5"/><rect x="864" y="306" width="10" height="8" rx="1.5" fill="#FFE29A" fill-opacity="0.9"/>
+        <rect x="832" y="324" width="10" height="8" rx="1.5" fill="#FFE29A" fill-opacity="0.9"/><rect x="848" y="324" width="10" height="8" rx="1.5"/><rect x="864" y="324" width="10" height="8" rx="1.5"/>
+        <rect x="832" y="342" width="10" height="8" rx="1.5"/><rect x="848" y="342" width="10" height="8" rx="1.5"/><rect x="864" y="342" width="10" height="8" rx="1.5"/>
+        <rect x="1010" y="322" width="10" height="8" rx="1.5"/><rect x="1026" y="322" width="10" height="8" rx="1.5" fill="#FFE29A" fill-opacity="0.9"/><rect x="1042" y="322" width="8" height="8" rx="1.5"/>
+        <rect x="1010" y="340" width="10" height="8" rx="1.5"/><rect x="1026" y="340" width="10" height="8" rx="1.5"/><rect x="1042" y="340" width="8" height="8" rx="1.5"/>
+        <rect x="1120" y="314" width="10" height="8" rx="1.5"/><rect x="1136" y="314" width="10" height="8" rx="1.5"/>
+        <rect x="1120" y="332" width="10" height="8" rx="1.5" fill="#FFE29A" fill-opacity="0.9"/><rect x="1136" y="332" width="10" height="8" rx="1.5"/>
+        <rect x="780" y="344" width="10" height="8" rx="1.5"/><rect x="796" y="344" width="10" height="8" rx="1.5"/>
+        <rect x="1070" y="356" width="10" height="8" rx="1.5"/><rect x="1086" y="356" width="10" height="8" rx="1.5" fill="#FFE29A" fill-opacity="0.9"/>
+      </g>
+      <!-- front houses -->
+      <path d="M904 420 l36 -30 l36 30 v70 h-72 z" fill="#FFF4DE"/>
+      <path d="M890 426 l50 -42 l50 42 l-8 6 l-42 -35 l-42 35 z" fill="#F08A5D"/>
+      <rect x="930" y="446" width="20" height="40" rx="3" fill="#C9673E"/>
+      <rect x="912" y="430" width="12" height="11" rx="2" fill="#FFD36B"/>
+      <rect x="956" y="430" width="12" height="11" rx="2" fill="#FFD36B"/>
+      <path d="M760 470 Q960 430 1160 470 V480 H760 Z" fill="#0E443C" fill-opacity="0.6"/>
+    </g>
+    <!-- sweep -->
+    <path d="M960 270 L1160 270 A200 200 0 0 0 1101.4 128.6 Z" fill="url(#sweep)"/>
+    <path d="M960 270 L1101.4 128.6" stroke="#B8FFE6" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
 
-    <!-- blips -->
-    <g font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" font-weight="600">
-      <circle cx="96" cy="-58" r="9" fill="#1F7A6B" fill-opacity="0.2"/>
-      <circle cx="96" cy="-58" r="5" fill="#1F7A6B"/>
-      <rect x="110" y="-84" width="80" height="26" rx="13" fill="#1F7A6B"/>
-      <text x="150" y="-66" fill="#FFFFFF" text-anchor="middle">优先核验</text>
+  <!-- center emblem -->
+  <circle cx="960" cy="270" r="34" fill="#FFFFFF" filter="url(#soft)"/>
+  <path d="M944 273 l16 -14 l16 14 v14 h-32 z" fill="#1F7A6B"/>
+  <rect x="956" y="276" width="8" height="11" rx="1.5" fill="#FFFFFF"/>
 
-      <circle cx="-84" cy="-118" r="9" fill="#1F7A6B" fill-opacity="0.2"/>
-      <circle cx="-84" cy="-118" r="5" fill="#1F7A6B"/>
-      <rect x="-198" y="-142" width="80" height="26" rx="13" fill="#1F7A6B"/>
-      <text x="-158" y="-124" fill="#FFFFFF" text-anchor="middle">优先核验</text>
+  <!-- blips -->
+  <g>
+    <circle cx="1060" cy="190" r="12" fill="#5BE3B5" filter="url(#blipGlow)"/>
+    <circle cx="1060" cy="190" r="6" fill="#5BE3B5" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="862" cy="200" r="12" fill="#FFC14D" filter="url(#blipGlow)"/>
+    <circle cx="862" cy="200" r="6" fill="#FFC14D" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="1052" cy="372" r="14" fill="#FF6B57" filter="url(#blipGlow)"/>
+    <circle cx="1052" cy="372" r="6" fill="#FF6B57" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
 
-      <circle cx="-104" cy="64" r="9" fill="#E3A33B" fill-opacity="0.25"/>
-      <circle cx="-104" cy="64" r="5" fill="#D9922A"/>
-      <rect x="-226" y="78" width="96" height="26" rx="13" fill="#FFFFFF" stroke="#E3C48F"/>
-      <text x="-178" y="96" fill="#A86A10" text-anchor="middle">补齐租金</text>
+  <!-- connectors -->
+  <g fill="none" stroke-width="1.6" stroke-dasharray="4 5" stroke-linecap="round">
+    <path d="M1066 184 Q1085 150 1084 128" stroke="#1F7A6B" stroke-opacity="0.55"/>
+    <path d="M856 194 Q830 172 812 142" stroke="#C7871A" stroke-opacity="0.6"/>
+    <path d="M1058 380 Q1070 410 1074 428" stroke="#E0533F" stroke-opacity="0.6"/>
+  </g>
 
-      <circle cx="70" cy="128" r="9" fill="#E0654A" fill-opacity="0.22"/>
-      <circle cx="70" cy="128" r="5" fill="#D9573C"/>
-      <rect x="84" y="114" width="96" height="26" rx="13" fill="#FFFFFF" stroke="#EDB6A8"/>
-      <text x="132" y="132" fill="#B8432B" text-anchor="middle">报价冲突</text>
+  <!-- floating listing cards (real cases) -->
+  <g font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+    <!-- green -->
+    <g transform="translate(1004 40)">
+      <rect width="240" height="88" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <rect x="14" y="16" width="56" height="56" rx="12" fill="url(#thumbG)"/>
+      <path d="M28 52 l14 -12 l14 12 v12 h-28 z" fill="#1F7A6B"/>
+      <rect x="38" y="56" width="8" height="8" rx="1" fill="#DDF1E9"/>
+      <circle cx="58" cy="30" r="5" fill="#FFD36B"/>
+      <text x="84" y="38" font-size="15.5" font-weight="700" fill="#1D2B28">绿波家园两房</text>
+      <text x="84" y="58" font-size="12.5" fill="#6B7C78">268万 · 67.19㎡ · 电梯</text>
+      <rect x="84" y="64" width="78" height="20" rx="10" fill="#E2F4EE"/>
+      <circle cx="96" cy="74" r="4" fill="#1FA37F"/>
+      <text x="105" y="78.5" font-size="12" font-weight="700" fill="#16725A">优先核验</text>
+    </g>
+    <!-- amber -->
+    <g transform="translate(662 52)">
+      <rect width="250" height="88" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <rect x="14" y="16" width="56" height="56" rx="12" fill="url(#thumbA)"/>
+      <rect x="28" y="34" width="28" height="30" rx="3" fill="#D99A2B"/>
+      <g fill="#FFF3DA"><rect x="33" y="40" width="7" height="6" rx="1"/><rect x="44" y="40" width="7" height="6" rx="1"/><rect x="33" y="51" width="7" height="6" rx="1"/><rect x="44" y="51" width="7" height="6" rx="1"/></g>
+      <text x="84" y="38" font-size="15.5" font-weight="700" fill="#1D2B28">江锦北苑一房两厅</text>
+      <text x="84" y="58" font-size="12.5" fill="#6B7C78">出租 · 65㎡ · 租金未公开</text>
+      <rect x="84" y="64" width="78" height="20" rx="10" fill="#FFF2D9"/>
+      <circle cx="96" cy="74" r="4" fill="#E0A021"/>
+      <text x="105" y="78.5" font-size="12" font-weight="700" fill="#9A6510">补齐租金</text>
+    </g>
+    <!-- red -->
+    <g transform="translate(990 428)">
+      <rect width="254" height="88" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <rect x="14" y="16" width="56" height="56" rx="12" fill="url(#thumbR)"/>
+      <text x="42" y="42" text-anchor="middle" font-size="13" font-weight="800" fill="#C7402D">225</text>
+      <path d="M26 47 h32" stroke="#C7402D" stroke-width="1.5"/>
+      <text x="42" y="62" text-anchor="middle" font-size="13" font-weight="800" fill="#C7402D">228</text>
+      <text x="84" y="38" font-size="15.5" font-weight="700" fill="#1D2B28">三林某出售帖</text>
+      <text x="84" y="58" font-size="12.5" fill="#6B7C78">标题 225万 · 正文 228万</text>
+      <rect x="84" y="64" width="78" height="20" rx="10" fill="#FFE6E2"/>
+      <circle cx="96" cy="74" r="4" fill="#E0533F"/>
+      <text x="105" y="78.5" font-size="12" font-weight="700" fill="#B33C2B">报价冲突</text>
     </g>
   </g>
 </svg>

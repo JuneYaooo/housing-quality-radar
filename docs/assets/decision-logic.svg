@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="830" viewBox="0 0 1280 830" role="img" aria-labelledby="title desc">
+  <title id="title">关键判断逻辑</title>
+  <desc id="desc">三条规则：同类房源要过五道筛子；同类不足 3 套不比价、3 到 4 套只给区间、5 套以上才给中位数；报价冲突、付款条款和核验码各有亮灯规则。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FCF8F0"/>
+      <stop offset="1" stop-color="#E8F1F3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#A9CBEA" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#A9CBEA" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowPeach" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFD2B5" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFD2B5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="funnel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3FA891"/>
+      <stop offset="1" stop-color="#155C50"/>
+    </linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#1F5F54" fill-opacity="0.08"/>
+    </pattern>
+    <clipPath id="frame"><rect width="1280" height="830" rx="28"/></clipPath>
+    <filter id="card" x="-10%" y="-15%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#173C35" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#173C35" flood-opacity="0.05"/>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#173C35" flood-opacity="0.14"/>
+    </filter>
+    <symbol id="house" viewBox="0 0 28 26">
+      <path d="M0 13 L14 1 L28 13 V26 H0 Z"/>
+      <rect x="10" y="16" width="8" height="10" fill="#FFFFFF" fill-opacity="0.75"/>
+    </symbol>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="830" fill="url(#bg)"/>
+    <rect width="1280" height="830" fill="url(#dots)"/>
+    <circle cx="1180" cy="80" r="320" fill="url(#glow)"/>
+    <circle cx="60" cy="800" r="280" fill="url(#glowPeach)"/>
+  </g>
+
+  <g font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+    <text x="48" y="74" font-size="34" font-weight="800" fill="#143F37">关键判断逻辑</text>
+    <text x="48" y="108" font-size="17" fill="#4E6661">样本够才比价，冲突不取低值，付款有红线。这些数都由脚本算，不让模型猜。</text>
+
+    <!-- ===== Panel A: funnel ===== -->
+    <g transform="translate(40 140)">
+      <rect width="590" height="360" rx="24" fill="#FFFFFF" filter="url(#card)"/>
+      <rect x="24" y="22" width="30" height="30" rx="9" fill="#1F7A6B"/>
+      <text x="39" y="43" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">1</text>
+      <text x="66" y="44" font-size="20" font-weight="800" fill="#1D2B28">什么才算“同类”：过五道筛子</text>
+
+      <!-- houses dropping in -->
+      <g>
+        <use href="#house" x="44" y="72" width="24" height="22" fill="#F08A5D"/>
+        <use href="#house" x="74" y="64" width="24" height="22" fill="#1F7A6B"/>
+        <use href="#house" x="104" y="74" width="24" height="22" fill="#5AA7C6"/>
+        <use href="#house" x="134" y="62" width="24" height="22" fill="#E0A021"/>
+        <use href="#house" x="164" y="72" width="24" height="22" fill="#1F7A6B"/>
+        <use href="#house" x="88" y="92" width="20" height="18" fill="#B59BD8" opacity="0.9"/>
+        <use href="#house" x="140" y="92" width="20" height="18" fill="#E0533F" opacity="0.9"/>
+      </g>
+      <!-- funnel -->
+      <path d="M34 118 H198 L140 276 H92 Z" fill="url(#funnel)"/>
+      <g stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="5 4">
+        <path d="M44 146 H188"/>
+        <path d="M54 176 H178"/>
+        <path d="M65 206 H167"/>
+        <path d="M76 236 H156"/>
+      </g>
+      <g fill="#FFFFFF" font-size="13" font-weight="800" text-anchor="middle">
+        <text x="116" y="138">1</text><text x="116" y="168">2</text><text x="116" y="198">3</text><text x="116" y="228">4</text><text x="116" y="258">5</text>
+      </g>
+      <rect x="92" y="276" width="48" height="10" rx="2" fill="#155C50"/>
+      <use href="#house" x="90" y="292" width="24" height="22" fill="#1F7A6B"/>
+      <use href="#house" x="118" y="292" width="24" height="22" fill="#1F7A6B"/>
+
+      <!-- filter rows -->
+      <g font-size="15">
+        <g transform="translate(228 118)">
+          <rect width="338" height="34" rx="10" fill="#F2F8F6"/>
+          <text x="14" y="23" fill="#1F7A6B" font-weight="800">1</text>
+          <text x="34" y="23" fill="#24332F">同为出售，或同为出租</text>
+        </g>
+        <g transform="translate(228 158)">
+          <rect width="338" height="34" rx="10" fill="#F2F8F6"/>
+          <text x="14" y="23" fill="#1F7A6B" font-weight="800">2</text>
+          <text x="34" y="23" fill="#24332F">户型相同（如都是两室）</text>
+        </g>
+        <g transform="translate(228 198)">
+          <rect width="338" height="34" rx="10" fill="#F2F8F6"/>
+          <text x="14" y="23" fill="#1F7A6B" font-weight="800">3</text>
+          <text x="34" y="23" fill="#24332F">面积相差不超过 <tspan font-weight="800" fill="#1F7A6B">±15%</tspan></text>
+        </g>
+        <g transform="translate(228 238)">
+          <rect width="338" height="34" rx="10" fill="#F2F8F6"/>
+          <text x="14" y="23" fill="#1F7A6B" font-weight="800">4</text>
+          <text x="34" y="23" fill="#24332F">出售看面积口径：建筑 / 套内 / 使用</text>
+        </g>
+        <g transform="translate(228 278)">
+          <rect width="338" height="34" rx="10" fill="#F2F8F6"/>
+          <text x="14" y="23" fill="#1F7A6B" font-weight="800">5</text>
+          <text x="34" y="23" fill="#24332F">两次报价观察相隔不超过 <tspan font-weight="800" fill="#1F7A6B">90 天</tspan></text>
+        </g>
+      </g>
+      <text x="24" y="342" font-size="12.5" fill="#6B7C78">产证面积按建筑面积算；同一套房只取最新一次报价</text>
+    </g>
+
+    <!-- ===== Panel B: tiers ===== -->
+    <g transform="translate(650 140)">
+      <rect width="590" height="360" rx="24" fill="#FFFFFF" filter="url(#card)"/>
+      <rect x="24" y="22" width="30" height="30" rx="9" fill="#2F6FB0"/>
+      <text x="39" y="43" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">2</text>
+      <text x="66" y="44" font-size="20" font-weight="800" fill="#1D2B28">同类有几套，就说几分话</text>
+
+      <!-- tier 1 -->
+      <g transform="translate(24 70)">
+        <rect width="542" height="76" rx="16" fill="#FFF7EA"/>
+        <text x="18" y="32" font-size="22" font-weight="800" fill="#B8790F">&lt; 3 套</text>
+        <text x="18" y="56" font-size="12.5" fill="#9A6510">可比不足</text>
+        <!-- strip -->
+        <path d="M110 38 H230" stroke="#E8D3AE" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="140" cy="38" r="7" fill="#E0A021"/>
+        <path d="M184 28 l3 7 h7.5 l-6 4.5 l2.3 7.2 l-6.8 -4.3 l-6.8 4.3 l2.3 -7.2 l-6 -4.5 h7.5 z" fill="#1D2B28"/>
+        <text x="252" y="32" font-size="14.5" font-weight="700" fill="#2E2A22">只逐套对照，不给区间</text>
+        <text x="252" y="55" font-size="13" fill="#7A6A4F">也不说哪套更便宜</text>
+        <g transform="translate(408 22)">
+          <rect width="120" height="32" rx="16" fill="#FFFFFF" stroke="#E0A021" stroke-opacity="0.45"/>
+          <text x="60" y="21" text-anchor="middle" font-size="12.5" font-weight="700" fill="#9A6510">三林两套：n=1</text>
+        </g>
+      </g>
+      <!-- tier 2 -->
+      <g transform="translate(24 156)">
+        <rect width="542" height="76" rx="16" fill="#EEF4FB"/>
+        <text x="18" y="32" font-size="22" font-weight="800" fill="#2F6FB0">3–4 套</text>
+        <text x="18" y="56" font-size="12.5" fill="#4F78A3">仅区间</text>
+        <path d="M110 38 H230" stroke="#C9D9EC" stroke-width="2" stroke-linecap="round"/>
+        <path d="M122 26 v24 M218 26 v24" stroke="#2F6FB0" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M122 38 H218" stroke="#2F6FB0" stroke-width="6" stroke-opacity="0.18"/>
+        <circle cx="122" cy="38" r="6" fill="#2F6FB0"/>
+        <circle cx="150" cy="38" r="6" fill="#2F6FB0"/>
+        <circle cx="196" cy="38" r="6" fill="#2F6FB0"/>
+        <circle cx="218" cy="38" r="6" fill="#2F6FB0"/>
+        <path d="M172 28 l3 7 h7.5 l-6 4.5 l2.3 7.2 l-6.8 -4.3 l-6.8 4.3 l2.3 -7.2 l-6 -4.5 h7.5 z" fill="#1D2B28"/>
+        <text x="252" y="32" font-size="14.5" font-weight="700" fill="#1D2B3A">给最低到最高的区间和位次</text>
+        <text x="252" y="55" font-size="13" fill="#5A6B80">不给中位数，也不给折价率</text>
+      </g>
+      <!-- tier 3 -->
+      <g transform="translate(24 242)">
+        <rect width="542" height="76" rx="16" fill="#EAF5F1"/>
+        <text x="18" y="32" font-size="22" font-weight="800" fill="#1F7A6B">≥ 5 套</text>
+        <text x="18" y="56" font-size="12.5" fill="#3F8577">分位可用</text>
+        <path d="M110 38 H230" stroke="#C3E0D7" stroke-width="2" stroke-linecap="round"/>
+        <rect x="142" y="24" width="56" height="28" rx="6" fill="#1F7A6B" fill-opacity="0.15" stroke="#1F7A6B" stroke-width="1.5"/>
+        <path d="M168 20 v36" stroke="#1F7A6B" stroke-width="3" stroke-linecap="round"/>
+        <g fill="#1F7A6B">
+          <circle cx="118" cy="38" r="5"/><circle cx="148" cy="38" r="5"/><circle cx="168" cy="38" r="5"/><circle cx="190" cy="38" r="5"/><circle cx="224" cy="38" r="5"/>
+        </g>
+        <text x="142" y="68" text-anchor="middle" font-size="10.5" fill="#3F8577">P25</text>
+        <text x="168" y="16" text-anchor="middle" font-size="10.5" fill="#3F8577">中位</text>
+        <text x="198" y="68" text-anchor="middle" font-size="10.5" fill="#3F8577">P75</text>
+        <text x="252" y="32" font-size="14.5" font-weight="700" fill="#17322C">给中位数和四分位</text>
+        <text x="252" y="55" font-size="13" fill="#4E6A63">低于 P25 时，先提示核实费用和是否还在租售</text>
+      </g>
+      <text x="24" y="342" font-size="12.5" fill="#6B7C78">★ 正在评估的房源　·　全部是挂牌报价，不是成交价</text>
+    </g>
+
+    <!-- ===== Panel C: lights ===== -->
+    <g transform="translate(40 520)">
+      <rect width="1200" height="270" rx="24" fill="#FFFFFF" filter="url(#card)"/>
+      <rect x="24" y="22" width="30" height="30" rx="9" fill="#E0533F"/>
+      <text x="39" y="43" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">3</text>
+      <text x="66" y="44" font-size="20" font-weight="800" fill="#1D2B28">这些情况直接亮灯</text>
+
+      <!-- C1 price conflict -->
+      <g transform="translate(24 70)">
+        <rect width="352" height="178" rx="18" fill="#FFF3F0"/>
+        <text x="20" y="32" font-size="16" font-weight="800" fill="#B33C2B">报价前后不一致</text>
+        <g transform="translate(20 50)">
+          <g transform="rotate(-4 50 22)" filter="url(#soft)">
+            <rect width="100" height="44" rx="10" fill="#FFFFFF"/>
+            <text x="12" y="18" font-size="11" fill="#9A6B63">标题</text>
+            <text x="12" y="36" font-size="16" font-weight="800" fill="#C7402D">225 万</text>
+          </g>
+          <text x="124" y="30" font-size="24" font-weight="800" fill="#E0533F">≠</text>
+          <g transform="translate(152 0) rotate(3 50 22)" filter="url(#soft)">
+            <rect width="100" height="44" rx="10" fill="#FFFFFF"/>
+            <text x="12" y="18" font-size="11" fill="#9A6B63">正文</text>
+            <text x="12" y="36" font-size="16" font-weight="800" fill="#C7402D">228 万</text>
+          </g>
+        </g>
+        <g font-size="13.5" fill="#5B3A33">
+          <text x="20" y="130">不取较低的那个数，不算单价，</text>
+          <text x="20" y="152">也不进同类对比；先问清再说。</text>
+        </g>
+      </g>
+
+      <!-- C2 payment -->
+      <g transform="translate(392 70)">
+        <rect width="420" height="178" rx="18" fill="#FFF8EC"/>
+        <text x="20" y="32" font-size="16" font-weight="800" fill="#9A6510">付款条款</text>
+        <text x="96" y="32" font-size="12.5" fill="#9A7A45">每条都只是提示，不等于诈骗</text>
+        <g font-size="13" font-weight="700">
+          <g transform="translate(20 48)"><rect width="128" height="30" rx="15" fill="#FFFFFF" stroke="#E0A021" stroke-opacity="0.5"/><text x="64" y="20" text-anchor="middle" fill="#8A5A0C">租房预付 &gt; 3 个月</text></g>
+          <g transform="translate(156 48)"><rect width="128" height="30" rx="15" fill="#FFFFFF" stroke="#E0A021" stroke-opacity="0.5"/><text x="64" y="20" text-anchor="middle" fill="#8A5A0C">租房押金 &gt; 1 个月</text></g>
+          <g transform="translate(292 48)"><rect width="108" height="30" rx="15" fill="#FFFFFF" stroke="#E0A021" stroke-opacity="0.5"/><text x="54" y="20" text-anchor="middle" fill="#8A5A0C">租金贷 / 分期</text></g>
+          <g transform="translate(20 86)"><rect width="190" height="30" rx="15" fill="#FFFFFF" stroke="#E0A021" stroke-opacity="0.5"/><text x="95" y="20" text-anchor="middle" fill="#8A5A0C">中介或平台代收租金押金</text></g>
+        </g>
+        <g font-size="13" font-weight="800">
+          <g transform="translate(20 130)"><rect width="110" height="32" rx="16" fill="#E0533F"/><text x="55" y="21" text-anchor="middle" fill="#FFFFFF">看房前付款</text></g>
+          <g transform="translate(138 130)"><rect width="120" height="32" rx="16" fill="#E0533F"/><text x="60" y="21" text-anchor="middle" fill="#FFFFFF">不可追溯付款</text></g>
+        </g>
+        <path d="M268 146 h20" stroke="#E0533F" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M282 140 l7 6 l-7 6" fill="none" stroke="#E0533F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="298" y="151" font-size="14" font-weight="800" fill="#B33C2B">不进优先清单</text>
+      </g>
+
+      <!-- C3 verification -->
+      <g transform="translate(828 70)">
+        <rect width="348" height="178" rx="18" fill="#EEF4FB"/>
+        <text x="20" y="32" font-size="16" font-weight="800" fill="#24578C">房源核验码（上海）</text>
+        <g transform="translate(20 50)">
+          <rect width="56" height="56" rx="12" fill="#FFFFFF" filter="url(#soft)"/>
+          <g fill="#2F6FB0">
+            <rect x="9" y="9" width="14" height="14" rx="2"/><rect x="33" y="9" width="14" height="14" rx="2"/><rect x="9" y="33" width="14" height="14" rx="2"/>
+            <rect x="33" y="33" width="5" height="5"/><rect x="42" y="33" width="5" height="5"/><rect x="33" y="42" width="5" height="5"/><rect x="42" y="42" width="5" height="5" fill="#E0533F"/>
+          </g>
+          <g fill="#FFFFFF"><rect x="13" y="13" width="6" height="6"/><rect x="37" y="13" width="6" height="6"/><rect x="13" y="37" width="6" height="6"/></g>
+        </g>
+        <g font-size="13.5" fill="#2B3E52">
+          <text x="92" y="66">没展示：请你索要后</text>
+          <text x="92" y="88">到官方平台自己查</text>
+          <text x="92" y="110" font-size="12.5" fill="#5A6B80">没展示不等于假房源</text>
+        </g>
+        <g font-size="13" fill="#2B3E52">
+          <circle cx="26" cy="138" r="4" fill="#E0A021"/><text x="38" y="143">中介或机构发帖却没展示，单独标出</text>
+          <circle cx="26" cy="162" r="4" fill="#E0A021"/><text x="38" y="167">租房帖发布超过 60 天，核验码可能过期</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
