@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">优质房子筛选器 · Housing Quality Radar</title>
+  <desc id="desc">在小红书上按区域筛选租房和二手房帖子，附原帖证据、同类报价对照和风险提示</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBF8F2"/>
+      <stop offset="1" stop-color="#F1ECE1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#1F7A6B" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#1F7A6B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1F7A6B" stop-opacity="0"/>
+      <stop offset="1" stop-color="#1F7A6B" stop-opacity="0.28"/>
+    </linearGradient>
+    <clipPath id="card"><rect width="1200" height="420" rx="20"/></clipPath>
+  </defs>
+
+  <rect width="1200" height="420" rx="20" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#1F7A6B" clip-path="url(#card)"/>
+
+  <!-- left text -->
+  <g font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+    <rect x="72" y="70" width="256" height="32" rx="16" fill="#E3EFEC"/>
+    <circle cx="92" cy="86" r="5" fill="#1F7A6B"/>
+    <text x="106" y="92" fill="#1F7A6B" font-size="15" font-weight="600" letter-spacing="1">AGENT SKILL · 小红书找房</text>
+
+    <text x="70" y="178" fill="#16202A" font-size="62" font-weight="700" letter-spacing="2">优质房子筛选器</text>
+    <text x="74" y="216" fill="#7A8580" font-size="20" font-weight="500" letter-spacing="3">HOUSING QUALITY RADAR</text>
+
+    <text x="74" y="270" fill="#3D4A47" font-size="22">按区域筛选租房、二手房帖子，告诉你先看哪几套，</text>
+    <text x="74" y="304" fill="#3D4A47" font-size="22">并附上原帖证据、同类报价对照和风险提示。</text>
+
+    <g font-size="15" font-weight="600">
+      <rect x="74" y="336" width="128" height="34" rx="8" fill="#1F7A6B"/>
+      <text x="138" y="358" fill="#FFFFFF" text-anchor="middle">优先看房清单</text>
+      <rect x="214" y="336" width="128" height="34" rx="8" fill="#FFFFFF" stroke="#D9D3C6"/>
+      <text x="278" y="358" fill="#2E3A37" text-anchor="middle">同口径比价</text>
+      <rect x="354" y="336" width="128" height="34" rx="8" fill="#FFFFFF" stroke="#D9D3C6"/>
+      <text x="418" y="358" fill="#2E3A37" text-anchor="middle">付款风险提示</text>
+      <rect x="494" y="336" width="128" height="34" rx="8" fill="#FFFFFF" stroke="#D9D3C6"/>
+      <text x="558" y="358" fill="#2E3A37" text-anchor="middle">待确认问题</text>
+    </g>
+  </g>
+
+  <!-- radar -->
+  <g transform="translate(925 210)">
+    <circle r="190" fill="url(#glow)"/>
+    <circle r="160" fill="none" stroke="#C9D9D4" stroke-width="1.5"/>
+    <circle r="112" fill="none" stroke="#C9D9D4" stroke-width="1.5"/>
+    <circle r="64" fill="none" stroke="#C9D9D4" stroke-width="1.5"/>
+    <line x1="-170" y1="0" x2="170" y2="0" stroke="#DCE6E2" stroke-width="1"/>
+    <line x1="0" y1="-170" x2="0" y2="170" stroke="#DCE6E2" stroke-width="1"/>
+    <path d="M0 0 L160 0 A160 160 0 0 0 113 -113 Z" fill="url(#sweep)" transform="rotate(-8)"/>
+    <line x1="0" y1="0" x2="158" y2="-22" stroke="#1F7A6B" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- house -->
+    <circle r="40" fill="#FFFFFF" stroke="#1F7A6B" stroke-width="2"/>
+    <path d="M-20 2 L0 -18 L20 2" fill="none" stroke="#1F7A6B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M-14 -2 V18 H14 V-2" fill="none" stroke="#1F7A6B" stroke-width="3.5" stroke-linejoin="round"/>
+    <rect x="-4" y="6" width="8" height="12" rx="1" fill="#1F7A6B"/>
+
+    <!-- blips -->
+    <g font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="14" font-weight="600">
+      <circle cx="96" cy="-58" r="9" fill="#1F7A6B" fill-opacity="0.2"/>
+      <circle cx="96" cy="-58" r="5" fill="#1F7A6B"/>
+      <rect x="110" y="-84" width="80" height="26" rx="13" fill="#1F7A6B"/>
+      <text x="150" y="-66" fill="#FFFFFF" text-anchor="middle">优先核验</text>
+
+      <circle cx="-84" cy="-118" r="9" fill="#1F7A6B" fill-opacity="0.2"/>
+      <circle cx="-84" cy="-118" r="5" fill="#1F7A6B"/>
+      <rect x="-198" y="-142" width="80" height="26" rx="13" fill="#1F7A6B"/>
+      <text x="-158" y="-124" fill="#FFFFFF" text-anchor="middle">优先核验</text>
+
+      <circle cx="-104" cy="64" r="9" fill="#E3A33B" fill-opacity="0.25"/>
+      <circle cx="-104" cy="64" r="5" fill="#D9922A"/>
+      <rect x="-226" y="78" width="96" height="26" rx="13" fill="#FFFFFF" stroke="#E3C48F"/>
+      <text x="-178" y="96" fill="#A86A10" text-anchor="middle">补齐租金</text>
+
+      <circle cx="70" cy="128" r="9" fill="#E0654A" fill-opacity="0.22"/>
+      <circle cx="70" cy="128" r="5" fill="#D9573C"/>
+      <rect x="84" y="114" width="96" height="26" rx="13" fill="#FFFFFF" stroke="#EDB6A8"/>
+      <text x="132" y="132" fill="#B8432B" text-anchor="middle">报价冲突</text>
+    </g>
+  </g>
+</svg>
